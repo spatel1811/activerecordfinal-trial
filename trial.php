@@ -6,6 +6,17 @@ define('DATABASE', 'sjp77');
 define('USERNAME', 'sjp77');
 define('PASSWORD', 'hS1DY7pYO');
 define('CONNECTION', 'sql1.njit.edu');
+final1::accs();
+final1::accinq();
+final1::accins();
+final1::accup();
+final1::accdel();
+final1::display();
+final1::todosr();
+final1::todoun();
+final1::todoins();
+final1::todoun();
+final1::tododel();
 class dbConn{
     //variable to hold connection object.
     protected static $db;
@@ -152,11 +163,18 @@ class todo extends model {
 }
 //--------------- Accounts Table-------------------------sjp77
 //-------------------------- Find All -------------------sjp77
+class final1 extends model
+{
+
+ static public function accs()
+{
+
+
 echo"<h1>Search accounts table</h1>";
 $records = accounts::findAll();
  // to print all accounts records in html table  
   $html = '<table border = 6><tbody>';
-  // Displaying Header Row ...... sjp77
+
   
   $html .= '<tr>';
     foreach($records[0] as $key=>$value)
@@ -165,9 +183,8 @@ $records = accounts::findAll();
         }
        
     $html .= '</tr>';
-    // Displayng Data Rows .......hh292
+    // Displayng Data Rows .......sjp77
     
-    //$i = 0;
     foreach($records as $key=>$value)
     {
         $html .= '<tr>';
@@ -178,14 +195,18 @@ $records = accounts::findAll();
         }
         $html .= '</tr>';
       
-      //$i++;
+
     }
     $html .= '</tbody></table>';
     print_r($html);
+}
 //--------------------------- Find Unique Record---------------sjp77
+ static public function accinq()
+{
+
     echo"<h1>Search account table by id</h1>";
 $record = accounts::findOne(4);
- // Displaying Header Row ...... sjp77
+ 
   
   $html = '<table border = 6><tbody>';
   $html .= '<tr>';
@@ -196,9 +217,7 @@ $record = accounts::findOne(4);
         }
        
     $html .= '</tr>';
-    // Displayng Data Rows .......sjp77
     
-    //$i = 0;
     
     foreach($record as $key=>$value)
     {
@@ -210,13 +229,17 @@ $record = accounts::findOne(4);
         }
         $html .= '</tr>';
       
-      //$i++;
+     
     }
     $html .= '</tbody></table>';
     
     print_r($html);
+}
 //-------------------------- Insert Record---------------------sjp77
+static public function accins()
+{
  echo "<h1>Insert One Record</h1>";
+
 $record = new account();
 $record->email="testnjit.edu";
 $record->fname="hh";
@@ -228,7 +251,7 @@ $record->password="12345";
 $record->save();
 $records = accounts::findAll();
 $html = '<table border = 6><tbody>';
-  // Displaying Header Row ...... sjp77
+  
   
   $html .= '<tr>';
     foreach($records[0] as $key=>$value)
@@ -237,9 +260,7 @@ $html = '<table border = 6><tbody>';
         }
        
     $html .= '</tr>';
-    // Displayng Data Rows .......sjp77
     
-    //$i = 0;
     foreach($records as $key=>$value)
     {
         $html .= '<tr>';
@@ -250,22 +271,26 @@ $html = '<table border = 6><tbody>';
         }
         $html .= '</tr>';
       
-      //$i++;
+      
     }
     $html .= '</tbody></table>';
 echo "<h3>After Inserting</h3>";
 print_r($html);
+}
 //------------------------- Delete Record -------------------sjp77
+static public function accdel()
+{
+
+
 echo "<h1>Delete One Record</h1>";
 $record= new account();
 $id=7;
 $record->delete($id);
 echo '<h3>Record greater then id: '.$id.' is deleted</h3>';
-//'<h3>After Delete</h3>';
+
 $record = accounts::findAll();
-//print_r($records);
+
 $html = '<table border = 6><tbody>';
-  // Displaying Header Row ...... hh292
   
   $html .= '<tr>';
     
@@ -275,9 +300,7 @@ $html = '<table border = 6><tbody>';
         }
        
     $html .= '</tr>';
-    // Displayng Data Rows .......sjp77
     
-    //$i = 0;
     foreach($record as $key=>$value)
     {
         $html .= '<tr>';
@@ -288,25 +311,29 @@ $html = '<table border = 6><tbody>';
         }
         $html .= '</tr>';
       
-      //$i++;
+      
     }
     $html .= '</tbody></table>';
 echo "<h3>After Deleteing</h3>";
 print_r($html);
+}
 //-----------------------------Update Record-------------------sjp77
+static public function accup()
+{
+
+
 echo "<h1>Update One Record</h1>";
 $id=4;
 $record = new account();
 $record->id=$id;
-$record->fname="fname_Update";
-$record->lname="lname_Update";
-$record->gender="gender_Update";
+$record->fname="saurabh";
+$record->lname="patel";
+$record->gender="male";
 $record->save();
 $record = accounts::findAll();
 echo "<h3>Record update with id: ".$id."</h3>";
         
 $html = '<table border = 6><tbody>';
-  // Displaying Header Row ...... sjp77
   
   $html .= '<tr>';
     
@@ -316,9 +343,7 @@ $html = '<table border = 6><tbody>';
         }
        
     $html .= '</tr>';
-    // Displayng Data Rows .......sjp77
     
-    //$i = 0;
     foreach($record as $key=>$value)
     {
         $html .= '<tr>';
@@ -329,14 +354,22 @@ $html = '<table border = 6><tbody>';
         }
         $html .= '</tr>';
       
-      //$i++;
+      
     }
     $html .= '</tbody></table>';
  
  print_r($html);
+}
 //------------------End Of Account Table -----------------------sjp77
+ static public  function display()
+ {
  echo"<h1><marquee> TODO TABLE FUNCTION STARTS HERE</marquee></h1>";
+}
 //--------------- Todo Table-------------------------sjp77
+ static public function todosr()
+ {
+
+
  echo "<h1>Search all for todo table</h1>";
  $records = todos::findAll();
  // to print all accounts records in html table  
@@ -350,9 +383,7 @@ $html = '<table border = 6><tbody>';
         }
        
     $html .= '</tr>';
-    // Displayng Data Rows .......sjp77
     
-    //$i = 0;
     foreach($records as $key=>$value)
     {
         $html .= '<tr>';
@@ -363,15 +394,20 @@ $html = '<table border = 6><tbody>';
         }
         $html .= '</tr>';
       
-      //$i++;
+      
     }
     $html .= '</tbody></table>';
     echo "Todo table";
     print_r($html);
+}
 //------------------Find Unique id-------------------sjp77
+  static public function todoun()
+ {
+
+
     echo"<h1>Search by uniqui id</h1>";
  $record = todos::findOne(3);
- // Displaying Header Row ...... sjp77
+ 
   print_r("Todo table id - 3");
   
   $html = '<table border = 6><tbody>';
@@ -383,9 +419,7 @@ $html = '<table border = 6><tbody>';
         }
        
     $html .= '</tr>';
-    // Displayng Data Rows .......sjp77
     
-    //$i = 0;
     
     foreach($record as $key=>$value)
     {
@@ -397,12 +431,17 @@ $html = '<table border = 6><tbody>';
         }
         $html .= '</tr>';
       
-      //$i++;
+      
     }
     $html .= '</tbody></table>';
     
     print_r($html);
+}
 //-------------------------Insert Record-----------------sjp77
+static  public function todoins()
+ {
+
+
    echo "<h2>Insert One Record</h2>";
         $record = new todo();
         $record->owneremail="sjp77@njit.edu";
@@ -416,7 +455,6 @@ $html = '<table border = 6><tbody>';
         echo"<h3>After Inserting</h3>";
  
      $html = '<table border = 6><tbody>';
-  // Displaying Header Row ...... sjp77
   
       $html .= '<tr>';
       foreach($records[0] as $key=>$value)
@@ -425,7 +463,7 @@ $html = '<table border = 6><tbody>';
         }
        
     $html .= '</tr>';
-    // Displayng Data Rows .......sjp77
+   
     
     //$i = 0;
     foreach($records as $key=>$value)
@@ -441,19 +479,23 @@ $html = '<table border = 6><tbody>';
       //$i++;
     }
     $html .= '</tbody></table>';
-//echo "<h3>After Inserting</h3>";
+
 print_r($html);
+}
 //------------------------------Delete record for todo ------------------sjp77
+static public function tododel()
+{
+
+
 echo "<h1>Delete  Record</h1>";
 $record= new todo();
 $id=7;
 $record->delete($id);
 echo '<h3>Record greater then id: '.$id.' is deleted</h3>';
-//'<h3>After Delete</h3>';
+
 $record = todos::findAll();
-//print_r($records);
+
 $html = '<table border = 6><tbody>';
-  // Displaying Header Row ...... hh292
   
   $html .= '<tr>';
     
@@ -463,9 +505,7 @@ $html = '<table border = 6><tbody>';
         }
        
     $html .= '</tr>';
-    // Displayng Data Rows .......sjp77
     
-    //$i = 0;
     foreach($record as $key=>$value)
     {
         $html .= '<tr>';
@@ -476,12 +516,17 @@ $html = '<table border = 6><tbody>';
         }
         $html .= '</tr>';
       
-      //$i++;
+     
     }
     $html .= '</tbody></table>';
 echo "<h3>After Deleteing</h3>";
 print_r($html);
+}
 //------------------------Update todos record -------------------------------------------------sjp77
+static public function todoup()
+{
+
+
 echo "<h1>Update One Record</h1>";
 $id=4;
 $record = new todo();
@@ -497,7 +542,6 @@ $record = todos::findAll();
 echo "<h3>Record update with id: ".$id."</h3>";
         
 $html = '<table border = 6><tbody>';
-  // Displaying Header Row ...... sjp77
   
   $html .= '<tr>';
     
@@ -507,9 +551,7 @@ $html = '<table border = 6><tbody>';
         }
        
     $html .= '</tr>';
-    // Displayng Data Rows .......sjp77
-    
-    //$i = 0;
+   
     foreach($record as $key=>$value)
     {
         $html .= '<tr>';
@@ -520,8 +562,11 @@ $html = '<table border = 6><tbody>';
         }
         $html .= '</tr>';
       
-      //$i++;
+      
     }
     $html .= '</tbody></table>';
  
  print_r($html);
+}
+
+}
